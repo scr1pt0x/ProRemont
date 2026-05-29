@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админка — ProRemont</title>
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="app">
+    <section id="view-login" class="view hidden">
+      <div class="login-card">
+        <img src="../images/logo.png" alt="ProRemont" class="login-card__logo">
+        <h1>Админка портфолио</h1>
+        <p class="login-card__hint">Управление работами на сайте</p>
+        <form id="login-form">
+          <label class="field">
+            <span class="field__label">Пароль</span>
+            <input type="password" id="login-password" required autocomplete="current-password">
+          </label>
+          <p class="form-error hidden" id="login-error"></p>
+          <button type="submit" class="btn btn--primary btn--block">Войти</button>
+        </form>
+        <a href="../index.html" class="login-card__back">← На сайт</a>
+      </div>
+    </section>
+
+    <section id="view-dashboard" class="view hidden">
+      <header class="admin-header">
+        <div class="admin-header__left">
+          <img src="../images/logo.png" alt="" class="admin-header__logo">
+          <div>
+            <h1>Работы</h1>
+            <p class="admin-header__sub">Добавление и редактирование портфолио</p>
+          </div>
+        </div>
+        <div class="admin-header__actions">
+          <a href="../index.html" class="btn btn--ghost" target="_blank">Открыть сайт</a>
+          <button type="button" class="btn btn--ghost" id="btn-open-settings">⚙ Настройки</button>
+          <button type="button" class="btn btn--primary" id="btn-add">+ Новая работа</button>
+          <button type="button" class="btn btn--ghost" id="btn-logout">Выйти</button>
+        </div>
+      </header>
+
+      <main class="admin-main container">
+        <div id="projects-list" class="projects-list"></div>
+        <p id="list-empty" class="empty hidden">Пока нет работ. Добавьте первую.</p>
+      </main>
+    </section>
+
+    <section id="view-settings" class="view hidden">
+      <header class="admin-header admin-header--compact">
+        <div class="admin-header__left">
+          <button type="button" class="btn btn--ghost" id="btn-settings-back">← Назад</button>
+          <h1>Настройки сайта</h1>
+        </div>
+        <div class="admin-header__actions">
+          <button type="button" class="btn btn--primary" id="btn-settings-save">Сохранить</button>
+        </div>
+      </header>
+
+      <main class="admin-main container">
+        <div class="settings-block">
+          <div class="settings-block__header">
+            <div>
+              <h2 class="settings-block__title">Статистика «О компании»</h2>
+              <p class="settings-block__hint">Числа и подписи под ними в разделе сайта</p>
+            </div>
+            <button type="button" class="btn btn--ghost" id="btn-add-stat">+ Добавить</button>
+          </div>
+          <div id="stats-editor" class="stats-editor"></div>
+        </div>
+        <div class="settings-block" style="margin-top:24px">
+          <div class="settings-block__header">
+            <div>
+              <h2 class="settings-block__title">Смена пароля</h2>
+              <p class="settings-block__hint">Пароль для входа в эту панель</p>
+            </div>
+          </div>
+          <div class="pw-form">
+            <label class="field">
+              <span class="field__label">Текущий пароль</span>
+              <input type="password" id="pw-current" autocomplete="current-password">
+            </label>
+            <label class="field">
+              <span class="field__label">Новый пароль</span>
+              <input type="password" id="pw-new" autocomplete="new-password">
+            </label>
+            <label class="field">
+              <span class="field__label">Повторите новый пароль</span>
+              <input type="password" id="pw-confirm" autocomplete="new-password">
+            </label>
+            <p class="form-error hidden" id="pw-error"></p>
+            <p class="form-success hidden" id="pw-success">Пароль изменён</p>
+            <button type="button" class="btn btn--primary" id="btn-pw-save">Изменить пароль</button>
+          </div>
+        </div>
+
+        <p class="form-error hidden" id="settings-error"></p>
+        <p class="form-success hidden" id="settings-success">Сохранено</p>
+      </main>
+    </section>
+
+    <section id="view-editor" class="view hidden">
+      <header class="admin-header admin-header--compact">
+        <div class="admin-header__left">
+          <button type="button" class="btn btn--ghost" id="btn-back">← Назад</button>
+          <h1 id="editor-title">Новая работа</h1>
+        </div>
+        <div class="admin-header__actions">
+          <button type="button" class="btn btn--danger" id="btn-delete" hidden>Удалить</button>
+          <button type="button" class="btn btn--primary" id="btn-save">Сохранить</button>
+        </div>
+      </header>
+
+      <main class="admin-main container editor">
+        <form id="editor-form" class="editor__grid">
+          <div class="editor__main">
+            <label class="field">
+              <span class="field__label">Название</span>
+              <input type="text" id="field-title" required placeholder="Например: Квартира, ул. Ленина">
+            </label>
+
+            <label class="field">
+              <span class="field__label">Описание</span>
+              <textarea id="field-description" rows="5" placeholder="Кратко опишите объект, объём работ и особенности проекта"></textarea>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Категория</span>
+              <select id="field-category"></select>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Идентификатор (slug)</span>
+              <input type="text" id="field-slug" pattern="[a-z0-9-]+" placeholder="auto-slug">
+              <span class="field__hint">Латиница и дефисы. Используется в именах файлов.</span>
+            </label>
+
+            <div class="field">
+              <span class="field__label">Фото и видео</span>
+              <div class="upload-zone" id="upload-zone">
+                <input type="file" id="upload-input" class="upload-zone__input" multiple accept="image/*,video/*">
+                <p>Перетащите файлы сюда или <button type="button" class="upload-zone__pick" id="upload-pick">выберите</button></p>
+                <p class="upload-zone__hint">JPG, PNG, WEBP, MP4 · большие фото сжимаются автоматически</p>
+              </div>
+              <p class="form-error hidden" id="upload-error"></p>
+            </div>
+
+            <div class="media-grid" id="media-grid"></div>
+          </div>
+
+          <aside class="editor__aside">
+            <div class="aside-card">
+              <h3>Подсказки</h3>
+              <ul>
+                <li>Сначала загрузите фото — первое станет обложкой.</li>
+                <li>Видео отображаются после фото в галерее.</li>
+                <li>После сохранения изменения сразу видны на сайте.</li>
+              </ul>
+            </div>
+          </aside>
+        </form>
+        <p class="form-error hidden" id="save-error"></p>
+        <p class="form-success hidden" id="save-success">Сохранено</p>
+      </main>
+    </section>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

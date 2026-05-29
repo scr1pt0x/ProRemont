@@ -1,0 +1,520 @@
+const PORTFOLIO_DATA = [
+    {
+        "slug": "hotel-hayat-time",
+        "title": "Гостиница Hayat Time",
+        "description": "Полный цикл работ по гостиничному объекту: черновая и чистовая отделка номерного фонда, общественных зон и технических помещений. Реализованы современные решения по освещению, сантехнике и отделочным материалам с учётом высокой проходимости.",
+        "category": "hotels",
+        "categoryLabel": "Отели и гостиницы",
+        "images": [
+            "images\/hotel-hayat-time-01.jpg",
+            "images\/hotel-hayat-time-02.jpg",
+            "images\/hotel-hayat-time-03.jpg",
+            "images\/hotel-hayat-time-04.jpg",
+            "images\/hotel-hayat-time-05.jpg",
+            "images\/hotel-hayat-time-06.jpg",
+            "images\/hotel-hayat-time-07.jpg",
+            "images\/hotel-hayat-time-08.jpg",
+            "images\/hotel-hayat-time-09.jpg",
+            "images\/hotel-hayat-time-10.jpg",
+            "images\/hotel-hayat-time-11.jpg",
+            "images\/hotel-hayat-time-12.jpg",
+            "images\/hotel-hayat-time-13.jpg",
+            "images\/hotel-hayat-time-14.jpg",
+            "images\/hotel-hayat-time-15.jpg",
+            "images\/hotel-hayat-time-16.jpg",
+            "images\/hotel-hayat-time-17.jpg",
+            "images\/hotel-hayat-time-18.jpg",
+            "images\/hotel-hayat-time-19.jpg",
+            "images\/hotel-hayat-time-20.jpg",
+            "images\/hotel-hayat-time-21.jpg",
+            "images\/hotel-hayat-time-22.jpg",
+            "images\/hotel-hayat-time-23.jpg",
+            "images\/hotel-hayat-time-24.jpg",
+            "images\/hotel-hayat-time-25.jpg"
+        ],
+        "videos": [],
+        "media": [
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-06.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-07.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-08.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-09.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-10.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-11.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-12.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-13.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-14.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-15.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-16.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-17.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-18.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-19.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-20.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-21.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-22.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-23.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-24.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/hotel-hayat-time-25.jpg"
+            }
+        ]
+    },
+    {
+        "slug": "house-1",
+        "title": "Частный дом",
+        "description": "Строительство частного дома под ключ — от планировки до финишной отделки. Фасадные работы, инженерные системы, благоустройство участка и подбор материалов в едином архитектурном стиле.",
+        "category": "houses",
+        "categoryLabel": "Частные дома",
+        "images": [
+            "images\/house-1-01.jpeg",
+            "images\/house-1-02.jpeg",
+            "images\/house-1-03.jpeg",
+            "images\/house-1-04.jpeg",
+            "images\/house-1-05.jpeg",
+            "images\/house-1-06.jpeg",
+            "images\/house-1-07.jpeg",
+            "images\/house-1-08.jpeg",
+            "images\/house-1-09.jpeg",
+            "images\/house-1-10.jpeg",
+            "images\/house-1-11.jpeg",
+            "images\/house-1-12.jpeg",
+            "images\/house-1-13.jpeg",
+            "images\/house-1-14.jpeg",
+            "images\/house-1-15.jpeg",
+            "images\/house-1-16.jpeg",
+            "images\/house-1-17.jpg"
+        ],
+        "videos": [],
+        "media": [
+            {
+                "type": "image",
+                "src": "images\/house-1-01.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-02.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-03.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-04.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-05.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-06.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-07.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-08.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-09.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-10.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-11.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-12.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-13.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-14.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-15.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-16.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images\/house-1-17.jpg"
+            }
+        ]
+    },
+    {
+        "slug": "gas-station-detail",
+        "title": "Заправка + детейлинг",
+        "description": "Коммерческий объект: зона АЗС и центр детейлинга. Выполнены фасадные работы, внутренняя отделка клиентских зон, монтаж оборудования и оформление пространства под формат сервиса.",
+        "category": "commercial",
+        "categoryLabel": "Коммерческие объекты",
+        "images": [
+            "images\/gas-station-detail-01.jpg",
+            "images\/gas-station-detail-02.jpg",
+            "images\/gas-station-detail-03.jpg",
+            "images\/gas-station-detail-04.jpg"
+        ],
+        "videos": [
+            "videos\/gas-station-detail-01.mp4",
+            "videos\/gas-station-detail-02.mp4"
+        ],
+        "media": [
+            {
+                "type": "image",
+                "src": "images\/gas-station-detail-01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/gas-station-detail-02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/gas-station-detail-03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/gas-station-detail-04.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/gas-station-detail-01.mp4",
+                "poster": "images\/gas-station-detail-01.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/gas-station-detail-02.mp4",
+                "poster": "images\/gas-station-detail-01.jpg"
+            }
+        ]
+    },
+    {
+        "slug": "apartment-berezka",
+        "title": "Квартира, р-н Берёзка",
+        "description": "Капитальный ремонт квартиры в районе Берёзка. Перепланировка, замена коммуникаций, выравнивание поверхностей и чистовая отделка всех помещений. Проект сопровождался поэтапным видеоотчётом.",
+        "category": "apartments",
+        "categoryLabel": "Квартиры",
+        "images": [
+            "images\/apartment-berezka-01.jpg",
+            "images\/apartment-berezka-02.jpg",
+            "images\/apartment-berezka-03.jpg",
+            "images\/apartment-berezka-04.jpg",
+            "images\/apartment-berezka-05.jpg",
+            "images\/apartment-berezka-06.jpg",
+            "images\/apartment-berezka-07.jpg"
+        ],
+        "videos": [
+            "videos\/apartment-berezka-01.mp4",
+            "videos\/apartment-berezka-02.mp4",
+            "videos\/apartment-berezka-03.mp4",
+            "videos\/apartment-berezka-04.mp4",
+            "videos\/apartment-berezka-05.mp4",
+            "videos\/apartment-berezka-06.mp4",
+            "videos\/apartment-berezka-07.mp4"
+        ],
+        "media": [
+            {
+                "type": "image",
+                "src": "images\/apartment-berezka-01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-berezka-02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-berezka-03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-berezka-04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-berezka-05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-berezka-06.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-berezka-07.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/apartment-berezka-01.mp4",
+                "poster": "images\/apartment-berezka-01.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/apartment-berezka-02.mp4",
+                "poster": "images\/apartment-berezka-01.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/apartment-berezka-03.mp4",
+                "poster": "images\/apartment-berezka-01.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/apartment-berezka-04.mp4",
+                "poster": "images\/apartment-berezka-01.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/apartment-berezka-05.mp4",
+                "poster": "images\/apartment-berezka-01.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/apartment-berezka-06.mp4",
+                "poster": "images\/apartment-berezka-01.jpg"
+            },
+            {
+                "type": "video",
+                "src": "videos\/apartment-berezka-07.mp4",
+                "poster": "images\/apartment-berezka-01.jpg"
+            }
+        ]
+    },
+    {
+        "slug": "apartment-yaroslavskaya",
+        "title": "Квартира, ул. Ярославская",
+        "description": "Ремонт квартиры на ул. Ярославская: дизайнерская концепция, подбор материалов и мебели, монтаж освещения и декора. Акцент на функциональные зоны и визуально лёгкое пространство.",
+        "category": "apartments",
+        "categoryLabel": "Квартиры",
+        "images": [
+            "images\/apartment-yaroslavskaya-01.jpg",
+            "images\/apartment-yaroslavskaya-02.jpg",
+            "images\/apartment-yaroslavskaya-03.jpg",
+            "images\/apartment-yaroslavskaya-04.jpg",
+            "images\/apartment-yaroslavskaya-05.jpg",
+            "images\/apartment-yaroslavskaya-06.jpg",
+            "images\/apartment-yaroslavskaya-07.jpg",
+            "images\/apartment-yaroslavskaya-08.jpg",
+            "images\/apartment-yaroslavskaya-09.jpg",
+            "images\/apartment-yaroslavskaya-10.jpg",
+            "images\/apartment-yaroslavskaya-11.jpg",
+            "images\/apartment-yaroslavskaya-12.jpg",
+            "images\/apartment-yaroslavskaya-13.jpg",
+            "images\/apartment-yaroslavskaya-14.jpg",
+            "images\/apartment-yaroslavskaya-15.jpg",
+            "images\/apartment-yaroslavskaya-16.jpg",
+            "images\/apartment-yaroslavskaya-17.jpg",
+            "images\/apartment-yaroslavskaya-18.jpg",
+            "images\/apartment-yaroslavskaya-19.jpg",
+            "images\/apartment-yaroslavskaya-20.jpg"
+        ],
+        "videos": [],
+        "media": [
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-06.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-07.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-08.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-09.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-10.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-11.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-12.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-13.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-14.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-15.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-16.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-17.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-18.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-19.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/apartment-yaroslavskaya-20.jpg"
+            }
+        ]
+    },
+    {
+        "slug": "restaurant-kartel",
+        "title": "Ресторан «Картель»",
+        "description": "Отделка ресторана «Картель» — барная зона, гостевой зал, кухня и санузлы. Работы выполнены с учётом коммерческих нагрузок, норм пожарной безопасности и сжатых сроков сдачи объекта.",
+        "category": "commercial",
+        "categoryLabel": "Коммерческие объекты",
+        "images": [
+            "images\/restaurant-kartel-01.jpg",
+            "images\/restaurant-kartel-02.jpg",
+            "images\/restaurant-kartel-03.jpg",
+            "images\/restaurant-kartel-04.jpg",
+            "images\/restaurant-kartel-05.jpg"
+        ],
+        "videos": [],
+        "media": [
+            {
+                "type": "image",
+                "src": "images\/restaurant-kartel-01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/restaurant-kartel-02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/restaurant-kartel-03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/restaurant-kartel-04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images\/restaurant-kartel-05.jpg"
+            }
+        ]
+    }
+];

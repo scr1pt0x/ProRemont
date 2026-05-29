@@ -1,0 +1,14 @@
+Options -Indexes
+
+# Block direct access to sensitive PHP files
+<FilesMatch "^(bootstrap|config)\.php$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Allow index.php
+<Files "index.php">
+  Order allow,deny
+  Allow from all
+</Files>
+

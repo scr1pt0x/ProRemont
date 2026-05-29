@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProRemont — строительство, ремонт, дизайн под ключ</title>
+  <meta name="description" content="ProRemont — строительство домов и отелей, ремонт любой сложности под ключ. Портфолио реализованных проектов.">
+  <meta property="og:title" content="ProRemont — строительство, ремонт, дизайн">
+  <meta property="og:description" content="Строительство домов и отелей. Ремонт любой сложности под ключ.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/logo.png">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <img src="images/logo.png" alt="ProRemont">
+      </a>
+      <nav class="nav nav--desktop" aria-label="Основная навигация">
+        <a href="#services" class="nav__link">Услуги</a>
+        <a href="#portfolio" class="nav__link">Работы</a>
+        <a href="#about" class="nav__link">О нас</a>
+        <a href="#contact" class="nav__link">Контакты</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__backdrop" id="mobile-menu-backdrop"></div>
+    <nav class="mobile-menu__panel" aria-label="Мобильная навигация">
+      <a href="#services" class="mobile-menu__link">Услуги</a>
+      <a href="#portfolio" class="mobile-menu__link">Работы</a>
+      <a href="#about" class="mobile-menu__link">О нас</a>
+      <a href="#contact" class="mobile-menu__link">Контакты</a>
+      <a href="https://wa.me/79286423233" class="btn btn--whatsapp mobile-menu__whatsapp" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    </nav>
+  </div>
+
+  <section class="hero" id="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="hero__tagline">строительство | ремонт | дизайн</p>
+        <h1 class="hero__title">Строительство домов и&nbsp;ремонт квартир по ключ.</h1>
+        <p class="hero__desc">Профессиональная команда с&nbsp;опытом реализации жилых, коммерческих и&nbsp;гостиничных объектов. От&nbsp;проекта до&nbsp;сдачи — полный цикл работ.</p>
+        <div class="hero__actions">
+          <a href="#portfolio" class="btn btn--accent">Смотреть работы</a>
+          <a href="https://wa.me/79644444886" class="btn btn--outline" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero__logo">
+        <img src="images/logo.png" alt="ProRemont" width="320" height="320">
+      </div>
+    </div>
+  </section>
+
+  <section class="services section" id="services">
+    <div class="container">
+      <span class="section__eyebrow">Что мы делаем</span>
+      <h2 class="section__title">Наши услуги</h2>
+      <p class="section__subtitle">Комплексный подход к&nbsp;каждому объекту</p>
+      <div class="services__grid">
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          </div>
+          <h3 class="service-card__title">Строительство</h3>
+          <p class="service-card__text">Частные дома, отели, гостиницы и&nbsp;коммерческие объекты. Проектирование, возведение, инженерные системы.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="service-card__title">Ремонт под ключ</h3>
+          <p class="service-card__text">Капитальный и&nbsp;косметический ремонт квартир, домов, офисов и&nbsp;общественных пространств любой сложности.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="service-card__title">Дизайн и отделка</h3>
+          <p class="service-card__text">Дизайн-проект, подбор материалов, декорирование. Создаём стильные и&nbsp;функциональные интерьеры.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio section" id="portfolio">
+    <div class="container">
+      <span class="section__eyebrow">Портфолио</span>
+      <h2 class="section__title">Наши работы</h2>
+      <p class="section__subtitle">Реализованные проекты</p>
+      <div class="portfolio__filters" id="filters">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="hotels">Отели</button>
+        <button class="filter-btn" data-filter="houses">Дома</button>
+        <button class="filter-btn" data-filter="apartments">Квартиры</button>
+        <button class="filter-btn" data-filter="commercial">Коммерция</button>
+      </div>
+      <div class="portfolio__grid" id="portfolio-grid"></div>
+    </div>
+  </section>
+
+  <section class="about section" id="about">
+    <div class="container about__inner">
+      <div class="about__content">
+        <span class="section__eyebrow">О нас</span>
+        <h2 class="section__title">О компании</h2>
+        <p class="about__text">ProRemont — команда профессионалов в&nbsp;области строительства и&nbsp;ремонта. Мы&nbsp;реализуем проекты любой сложности: от&nbsp;квартир и&nbsp;частных домов до&nbsp;отелей, ресторанов и&nbsp;коммерческих объектов.</p>
+        <p class="about__text">Работаем под ключ — берём на&nbsp;себя все этапы: от&nbsp;планирования и&nbsp;дизайна до&nbsp;чистовой отделки и&nbsp;сдачи объекта. Гарантируем качество, соблюдение сроков и&nbsp;прозрачность на&nbsp;каждом этапе.</p>
+        <ul class="about__stats" id="about-stats">
+          <li><strong>6</strong><span>реализованных проектов</span></li>
+          <li><strong>100%</strong><span>под ключ</span></li>
+          <li><strong>3</strong><span>направления работы</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact section" id="contact">
+    <div class="container contact__inner">
+      <span class="section__eyebrow">Контакты</span>
+      <h2 class="section__title">Свяжитесь с нами</h2>
+      <p class="section__subtitle">Обсудим ваш проект и&nbsp;рассчитаем стоимость</p>
+      <a href="https://wa.me/79644444886?text=Здравствуйте!%20Интересует%20ремонт/строительство" class="btn btn--whatsapp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.89-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Написать в WhatsApp
+      </a> <br>
+      <a href="tel:+79644444886" class="contact__phone">+7 (964) 444-48-86</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <img src="images/logo.png" alt="ProRemont" class="footer__logo" width="120" height="36">
+      <p class="footer__tagline">строительство | ремонт | дизайн</p>
+      <p class="footer__copy">&copy; 2026 ProRemont. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Закрыть">&times;</button>
+    <button class="lightbox__prev" id="lightbox-prev" aria-label="Назад">&#8249;</button>
+    <button class="lightbox__next" id="lightbox-next" aria-label="Вперёд">&#8250;</button>
+    <div class="lightbox__content">
+      <div class="lightbox__stage">
+        <img src="" alt="" id="lightbox-img" class="lightbox__media">
+        <video id="lightbox-video" class="lightbox__media" controls playsinline preload="metadata"></video>
+      </div>
+      <div class="lightbox__meta">
+        <p class="lightbox__caption" id="lightbox-caption"></p>
+        <p class="lightbox__desc hidden" id="lightbox-desc"></p>
+        <p class="lightbox__counter" id="lightbox-counter"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/portfolio-data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

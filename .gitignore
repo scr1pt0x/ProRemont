@@ -1,0 +1,17 @@
+# Dev
+.venv/
+__pycache__/
+*.part
+serve.sh
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets — не пушить в git
+api/config.php
+data/settings.json
+
+# Медиа — большие файлы, хранить отдельно
+images/
+videos/

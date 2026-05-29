@@ -1,0 +1,47 @@
+Options -Indexes
+
+# PHP limits for file uploads
+<IfModule mod_php8.c>
+  php_value upload_max_filesize 256M
+  php_value post_max_size 256M
+  php_value max_file_uploads 100
+  php_value memory_limit 256M
+</IfModule>
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 256M
+  php_value post_max_size 256M
+  php_value max_file_uploads 100
+  php_value memory_limit 256M
+</IfModule>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png  "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType video/mp4  "access plus 30 days"
+  ExpiresByType text/css   "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "\.(json|ini|sh)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Allow portfolio.json and settings.json to be fetched by the browser
+<Files "portfolio.json">
+  Order allow,deny
+  Allow from all
+</Files>
+<Files "settings.json">
+  Order allow,deny
+  Allow from all
+</Files>
