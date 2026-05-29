@@ -13,5 +13,8 @@ api/config.php
 data/settings.json
 
 # Медиа — большие файлы, хранить отдельно
-images/
+images/*
+!images/og-image.png
+!images/logo.png
+!images/favicon.png
 videos/
