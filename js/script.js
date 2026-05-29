@@ -1,10 +1,3 @@
-const CATEGORY_LABELS = {
-  hotels: 'Отели и гостиницы',
-  houses: 'Частные дома',
-  apartments: 'Квартиры',
-  commercial: 'Коммерческие объекты',
-};
-
 let PORTFOLIO = [];
 let currentFilter = 'all';
 let lightboxMedia = [];
@@ -15,11 +8,23 @@ let lightboxDescription = '';
 const grid = document.getElementById('portfolio-grid');
 const filters = document.getElementById('filters');
 const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
 const lightboxVideo = document.getElementById('lightbox-video');
 const lightboxCaption = document.getElementById('lightbox-caption');
 const lightboxDesc = document.getElementById('lightbox-desc');
 const lightboxCounter = document.getElementById('lightbox-counter');
+const _dotsEl = document.getElementById('lightbox-dots');
+const _swipeHint = document.getElementById('lb-swipe-hint');
+const MAX_DOTS = 15;
+
+/* ── Lightbox stage & image buffers ── */
+const _stage = document.getElementById('lightbox-stage');
+let _imgA = document.getElementById('lightbox-img');
+let _imgB = document.getElementById('lightbox-img-b');
+
+let _front = _imgA;
+let _back = _imgB;
+let _lbDir = 1;       // 1 = next, -1 = prev
+let _animTimer = null;
 
 function getMedia(project) {
   if (project.media && project.media.length) return project.media;
@@ -83,35 +88,133 @@ function pauseVideo() {
   lightboxVideo.load();
 }
 
-function showLightboxItem() {
+/* ── Dots ── */
+function renderDots() {
+  if (!_dotsEl) return;
+  const n = lightboxMedia.length;
+  if (n < 2 || n > MAX_DOTS) { _dotsEl.innerHTML = ''; return; }
+  if (_dotsEl.children.length !== n) {
+    _dotsEl.innerHTML = Array.from({ length: n }, (_, i) =>
+      `<span class="lb-dot${i === lightboxIdx ? ' active' : ''}"></span>`
+    ).join('');
+  } else {
+    Array.from(_dotsEl.children).forEach((d, i) =>
+      d.classList.toggle('active', i === lightboxIdx)
+    );
+  }
+}
+
+/* ── Preload cache ── */
+const _imgCache = {};
+function preloadAdjacent() {
+  for (let d = -2; d <= 3; d++) {
+    if (d === 0) continue;
+    const i = (lightboxIdx + d + lightboxMedia.length) % lightboxMedia.length;
+    const it = lightboxMedia[i];
+    if (it?.type === 'image' && !_imgCache[it.src]) {
+      const img = new Image(); img.src = it.src; _imgCache[it.src] = img;
+    }
+  }
+}
+/* ── Slide animation ── */
+const SLIDE_MS = 180;
+
+function canShowImages() {
+  return Boolean(_stage && _front && _back);
+}
+
+function finalizeSlide() {
+  if (!_animTimer || !canShowImages()) return;
+  clearTimeout(_animTimer);
+  _animTimer = null;
+  _front.className = 'lb-buf';
+  _front.src = '';
+  _back.className = 'lb-buf lb-visible';
+  _stage.classList.remove('lb-next', 'lb-prev');
+  [_front, _back] = [_back, _front];
+}
+
+function slideImages(src) {
+  if (!canShowImages()) return;
+  finalizeSlide();
+
+  if (!_imgCache[src]) {
+    const img = new Image(); img.src = src; _imgCache[src] = img;
+  }
+
+  if (_front.src) {
+    const current = new URL(_front.src, location.href).href;
+    const next = new URL(src, location.href).href;
+    if (current === next) return;
+  }
+
+  const animClass = _lbDir > 0 ? 'lb-next' : 'lb-prev';
+
+  _back.src = src;
+  _back.className = 'lb-buf lb-enter';
+  _front.classList.add('lb-leave');
+
+  void _stage.offsetWidth;
+
+  _stage.classList.add(animClass);
+  _back.classList.add('lb-entering');
+
+  _animTimer = setTimeout(() => {
+    finalizeSlide();
+  }, SLIDE_MS);
+}
+
+function showLightboxItem(instant) {
   const item = lightboxMedia[lightboxIdx];
   if (!item) return;
 
-  lightboxImg.classList.remove('active');
-  lightboxVideo.classList.remove('active');
-  pauseVideo();
+  const kind = item.type === 'video' ? 'видео' : 'фото';
+  lightboxCaption.textContent = `${lightboxTitle} — ${kind}`;
+  lightboxCounter.textContent = `${lightboxIdx + 1} / ${lightboxMedia.length}`;
+  renderDots();
 
   if (item.type === 'video') {
+    if (!canShowImages()) return;
+    finalizeSlide();
+    _front.className = 'lb-buf';
+    _back.className = 'lb-buf';
+    _front.src = '';
+    _back.src = '';
+    lightboxVideo.classList.remove('active');
+    pauseVideo();
     lightboxVideo.src = item.src;
     const poster = item.poster || lightboxMedia.find(m => m.type === 'image')?.src;
     if (poster) lightboxVideo.poster = poster;
     lightboxVideo.classList.add('active');
     lightboxVideo.play().catch(() => {});
-  } else {
-    lightboxImg.src = item.src;
-    lightboxImg.classList.add('active');
+    preloadAdjacent();
+    return;
   }
 
-  const kind = item.type === 'video' ? 'видео' : 'фото';
-  lightboxCaption.textContent = `${lightboxTitle} — ${kind}`;
-  lightboxCounter.textContent = `${lightboxIdx + 1} / ${lightboxMedia.length}`;
+  lightboxVideo.classList.remove('active');
+  pauseVideo();
+
+  if (!canShowImages()) return;
+
+  if (instant) {
+    finalizeSlide();
+    _front.src = item.src;
+    _front.className = 'lb-buf lb-visible';
+    _back.src = '';
+    _back.className = 'lb-buf';
+    _stage.classList.remove('lb-next', 'lb-prev');
+  } else {
+    slideImages(item.src);
+  }
+  preloadAdjacent();
 }
 
 function openLightbox(projectIdx, list) {
   const project = list[projectIdx];
-  if (!project) return;
+  if (!project || !canShowImages()) return;
   lightboxMedia = getMedia(project);
   lightboxIdx = 0;
+  _lbDir = 1;
   lightboxTitle = project.title;
   lightboxDescription = project.description || '';
   if (lightboxDesc) {
@@ -119,29 +222,41 @@ function openLightbox(projectIdx, list) {
     lightboxDesc.classList.toggle('hidden', !lightboxDescription);
   }
   lightbox.classList.toggle('has-desc', Boolean(lightboxDescription));
-  showLightboxItem();
+  _front = _imgA;
+  _back = _imgB;
+  if (_animTimer) { clearTimeout(_animTimer); _animTimer = null; }
+  _stage.classList.remove('lb-next', 'lb-prev');
+  showLightboxItem(true);
   lightbox.classList.add('open');
   document.body.style.overflow = 'hidden';
+  preloadAdjacent();
+  if (_swipeHint) _swipeHint.classList.toggle('visible', lightboxMedia.length > 1);
 }
 
 function closeLightbox() {
-  lightbox.classList.remove('open');
-  lightbox.classList.remove('has-desc');
+  finalizeSlide();
+  if (_swipeHint) _swipeHint.classList.remove('visible');
+  lightbox.classList.remove('open', 'has-desc');
   document.body.style.overflow = '';
   pauseVideo();
-  lightboxImg.src = '';
-  lightboxImg.classList.remove('active');
+  _front.src = '';
+  _back.src = '';
+  _front.className = 'lb-buf lb-visible';
+  _back.className = 'lb-buf';
+  _stage.classList.remove('lb-next', 'lb-prev');
   lightboxVideo.classList.remove('active');
 }
 
 function nextItem() {
   if (!lightboxMedia.length) return;
+  _lbDir = 1;
   lightboxIdx = (lightboxIdx + 1) % lightboxMedia.length;
   showLightboxItem();
 }
 
 function prevItem() {
   if (!lightboxMedia.length) return;
+  _lbDir = -1;
   lightboxIdx = (lightboxIdx - 1 + lightboxMedia.length) % lightboxMedia.length;
   showLightboxItem();
 }
@@ -166,6 +281,36 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') nextItem();
   if (e.key === 'ArrowLeft') prevItem();
 });
+
+// Touch swipe (mobile only)
+;(function () {
+  const stage = document.getElementById('lightbox-stage');
+  if (!stage) return;
+  let x0 = 0, y0 = 0, active = false;
+
+  stage.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    x0 = e.touches[0].clientX;
+    y0 = e.touches[0].clientY;
+    active = true;
+  }, { passive: true });
+
+  stage.addEventListener('touchmove', e => {
+    if (!active) return;
+    const dx = e.touches[0].clientX - x0;
+    const dy = e.touches[0].clientY - y0;
+    if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  }, { passive: false });
+
+  stage.addEventListener('touchend', e => {
+    if (!active) return;
+    active = false;
+    const dx = e.changedTouches[0].clientX - x0;
+    const dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) < 48 || Math.abs(dy) > Math.abs(dx)) return;
+    dx < 0 ? nextItem() : prevItem();
+  }, { passive: true });
+}());
 
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobile-menu');
